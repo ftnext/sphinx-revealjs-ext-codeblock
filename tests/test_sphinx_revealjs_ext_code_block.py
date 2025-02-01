@@ -18,3 +18,15 @@ def test_normal_code_block(app):
     assert "data-trim" in code_attrs
     assert "data-noescape" in code_attrs
     assert "python" in code_attrs["class"]
+
+
+@pytest.mark.sphinx("revealjs", testroot="line-numbers")
+def test_code_block_linenos(app):
+    app.build()
+
+    slide_contents = (app.outdir / "index.html").read_text()
+    soup = BeautifulSoup(slide_contents, "html.parser")
+    pre_tags = soup.find_all("pre")
+    code_tag = pre_tags[0].code
+    code_attrs = code_tag.attrs
+    assert code_attrs["data-line-numbers"] == ""
