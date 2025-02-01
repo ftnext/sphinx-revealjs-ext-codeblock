@@ -5,17 +5,26 @@ build-backend = "hatchling.build"
 [project]
 name = "sphinx-revealjs-ext-codeblock"
 dynamic = ["version"]
-description = ''
+description = 'Extend code-block directive for sphinx-revealjs builder'
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
-keywords = []
 authors = [
   { name = "ftnext", email = "takuyafjp+develop@gmail.com" },
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
+  "Intended Audience :: Developers",
+  "Framework :: Sphinx",
+  "Framework :: Sphinx :: Extension",
+  "Topic :: Documentation",
+  "Topic :: Documentation :: Sphinx",
+  "Topic :: Software Development :: Documentation",
+  "Topic :: Text Processing :: Markup :: HTML",
   "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
