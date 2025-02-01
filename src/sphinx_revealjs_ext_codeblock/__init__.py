@@ -2,9 +2,12 @@
 #
 # SPDX-License-Identifier: MIT
 from docutils.nodes import literal_block, section
+from sphinx.util.typing import ExtensionMetadata
 from sphinxcontrib.kasane import TranslatorSetUp
 from sphinxcontrib.kasane.conditions import BuilderNameCondition
 from sphinxcontrib.kasane.inheritance import MixinDynamicInheritance
+
+from sphinx_revealjs_ext_codeblock.__about__ import __version__
 
 
 class ExtendedLiteralRevealjsSlideTranslatorMixin:
@@ -36,10 +39,12 @@ class ExtendedLiteralRevealjsSlideTranslatorMixin:
         self.body.append(">")
 
 
-def setup(app):
+def setup(app) -> ExtensionMetadata:
     condition = BuilderNameCondition("revealjs")
     inheritance = MixinDynamicInheritance(
         ExtendedLiteralRevealjsSlideTranslatorMixin,
         "ExtendedLiteralRevealjsSlideTranslator",
     )
     app.connect("builder-inited", TranslatorSetUp(inheritance, condition))
+
+    return ExtensionMetadata(version=__version__)
