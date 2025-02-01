@@ -18,6 +18,7 @@ def test_normal_code_block(app):
     assert "data-trim" in code_attrs
     assert "data-noescape" in code_attrs
     assert "python" in code_attrs["class"]
+    assert "data-line-numbers" not in code_attrs
 
 
 @pytest.mark.sphinx("revealjs", testroot="line-numbers")
