@@ -32,6 +32,9 @@ Source = "https://github.com/ftnext/sphinx-revealjs-ext-codeblock"
 [tool.hatch.version]
 path = "src/sphinx_revealjs_ext_codeblock/__about__.py"
 
+[tool.hatch.envs.hatch-test]
+extra-dependencies = ["beautifulsoup4"]
+
 [tool.hatch.envs.types]
 extra-dependencies = [
   "mypy>=1.0.0",
