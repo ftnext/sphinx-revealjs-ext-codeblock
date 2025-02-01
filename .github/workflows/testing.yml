@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pypa/hatch@install
-      - run: hatch test --randomize -all -vv
+      - run: hatch test --randomize --all -vv
