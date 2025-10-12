@@ -7,7 +7,7 @@ name = "sphinx-revealjs-ext-codeblock"
 dynamic = ["version"]
 description = 'Extend code-block directive for sphinx-revealjs builder'
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = "MIT"
 authors = [
   { name = "ftnext", email = "takuyafjp+develop@gmail.com" },
@@ -25,11 +25,11 @@ classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
 ]
 dependencies = ["sphinx-revealjs", "sphinxcontrib-extdevhelper-kasane"]
 
@@ -44,7 +44,7 @@ path = "src/sphinx_revealjs_ext_codeblock/__about__.py"
 [tool.hatch.envs.hatch-test]
 extra-dependencies = ["beautifulsoup4"]
 [[tool.hatch.envs.hatch-test.matrix]]
-python = ["3.9", "3.10", "3.11", "3.12", "3.13"]
+python = ["3.10", "3.11", "3.12", "3.13", "3.14"]
 
 [tool.hatch.envs.types]
 extra-dependencies = [
