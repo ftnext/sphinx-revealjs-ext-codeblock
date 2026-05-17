@@ -3,7 +3,12 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/sphinx-revealjs-ext-codeblock.svg)](https://pypi.org/project/sphinx-revealjs-ext-codeblock)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/sphinx-revealjs-ext-codeblock.svg)](https://pypi.org/project/sphinx-revealjs-ext-codeblock)
 
-Extend `code-block` directive for Sphinx `revealjs` builder.
+Map standard Sphinx code-block options to reveal.js code attributes for the
+Sphinx `revealjs` builder.
+
+It lets authors keep using standard directives such as `code-block`,
+`literalinclude`, `:linenos:`, `:lineno-start:`, and `:emphasize-lines:`
+instead of switching to reveal.js-specific directives.
 
 -----
 
@@ -76,6 +81,27 @@ while True:
 ```
 
 See https://revealjs.com/code/#line-numbers-%26-highlights
+
+### Literalinclude Line Number Start
+
+```rst
+.. literalinclude:: example.py
+    :language: python
+    :lines: 2-3
+    :linenos:
+    :lineno-start: 1
+```
+
+```html
+<pre>
+  <code class="python" data-line-numbers data-ln-start-from="1">
+print(&quot;two&quot;)
+print(&quot;three&quot;)
+  </code>
+</pre>
+```
+
+See https://revealjs.com/code/#line-number-offset-4.2.0
 
 ## License
 
