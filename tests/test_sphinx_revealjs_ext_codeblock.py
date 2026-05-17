@@ -33,6 +33,18 @@ def test_code_block_linenos(app):
     assert code_attrs["data-line-numbers"] == ""
 
 
+@pytest.mark.sphinx("revealjs", testroot="literalinclude")
+def test_literalinclude_linenos_and_lineno_start(app):
+    app.build()
+
+    slide_contents = (app.outdir / "index.html").read_text()
+    soup = BeautifulSoup(slide_contents, "html.parser")
+    code_tag = soup.find("pre").code
+    code_attrs = code_tag.attrs
+    assert code_attrs["data-line-numbers"] == ""
+    assert code_attrs["data-ln-start-from"] == "1"
+
+
 @pytest.mark.sphinx("revealjs", testroot="emphasize-lines")
 def test_code_block_emphasize_lines(app):
     app.build()
