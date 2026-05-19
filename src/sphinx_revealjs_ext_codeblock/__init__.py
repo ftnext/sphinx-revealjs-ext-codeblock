@@ -21,21 +21,28 @@ class ExtendedLiteralRevealjsSlideTranslatorMixin:
         else:
             self.body.append("<pre>")
         self.body.append(f'<code data-trim data-noescape class="{lang}"')
-        # use the emphasize-lines directive to create line for line animations
+        highlight_args = node.get("highlight_args", {})
+        line_numbers_emitted = False
+        # Map standard Sphinx code options to reveal.js line number attributes.
         if "data-line-numbers" in node:
             self.body.append(f" data-line-numbers=\"{node['data-line-numbers']}\"")
-        # Tweak https://github.com/attakei/sphinx-revealjs/compare/master...ftnext:sphinx-revealjs:code-block-emphasize-lines
-        elif highlight_args := node.get("highlight_args"):
-            if "hl_lines" in highlight_args:
-                highlight_lines = ",".join(str(num) for num in highlight_args["hl_lines"])
-                self.body.append(f' data-line-numbers="{highlight_lines}"')
-        # Tweak End
+            line_numbers_emitted = True
+        elif "hl_lines" in highlight_args:
+            highlight_lines = ",".join(str(num) for num in highlight_args["hl_lines"])
+            self.body.append(f' data-line-numbers="{highlight_lines}"')
+            line_numbers_emitted = True
         elif node["linenos"]:
             self.body.append(" data-line-numbers")
+            line_numbers_emitted = True
         if "data-ln-start-from" in node:
-            self.body.append(f" data-ln-start-from=\"{node['data-ln-start-from']}\"")
-            if "data-line-numbers" not in node:
+            lineno_start = node["data-ln-start-from"]
+            self.body.append(f' data-ln-start-from="{lineno_start}"')
+            if not line_numbers_emitted:
                 self.body.append(" data-line-numbers")
+        else:
+            lineno_start = highlight_args.get("linenostart")
+            if lineno_start is not None and node["linenos"]:
+                self.body.append(f' data-ln-start-from="{lineno_start}"')
         self.body.append(">")
 
 
