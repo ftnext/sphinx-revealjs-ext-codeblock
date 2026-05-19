@@ -103,6 +103,25 @@ print(&quot;three&quot;)
 
 See https://revealjs.com/code/#line-number-offset-4.2.0
 
+### Literalinclude Matched Line Numbers
+
+```rst
+.. literalinclude:: example.py
+    :language: python
+    :lines: 2-3
+    :linenos:
+    :lineno-match:
+```
+
+```html
+<pre>
+  <code class="python" data-line-numbers data-ln-start-from="2">
+print(&quot;two&quot;)
+print(&quot;three&quot;)
+  </code>
+</pre>
+```
+
 ## License
 
 `sphinx-revealjs-ext-codeblock` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
